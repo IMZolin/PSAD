@@ -5,7 +5,17 @@
 
 ## Пример генерации кода Python из R-схемы
 
-<div>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="github-markdown.css">
+<style>
+	.box{
+    display: flex;
+    justify-content: center;"
+}
+    .sub-box{
+        margin-right: 20px;
+    }
+</style>
 <div class="box">
 <div class="sub-box">
 
@@ -37,14 +47,4 @@ else:
 ```
 
 </div>
-</div>
-<style>
-.box{
-    display: flex;
-    justify-content: center;"
-}
-.sub-box{
-    margin-right: 20px;
-}
-</style>
 </div>
