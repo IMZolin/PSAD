@@ -4,8 +4,18 @@
 На первой итерации система позволяет генерироать алгоритмы, состоящие из управляющий конструкций: IF, FOR, WHILE.
 
 ## Пример генерации кода Python из R-схемы
-<div style="display: flex; justify-content: center;">
-<div style="margin-right: 20px;">
+
+<style>
+.box{
+    display: flex;
+    justify-content: center;"
+}
+.sub-box{
+    margin-right: 20px;
+}
+</style>
+<div class="box">
+<div class="sub-box">
 
 **R-схема:**
 
@@ -19,11 +29,11 @@ o-------->o
 ```
 
 </div>
-<div style="margin-right: 25px;">
+<div class="sub-box">
         <b>Диаграмма Дракон:</b><br>
         <img width="350px" src="img/drakon.png" alt="drakon language"/>
     </div>
-<div style="margin-right: 20px;">
+<div class="sub-box">
 
 **Код на Python:**
 
