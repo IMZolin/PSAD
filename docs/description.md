@@ -1,11 +1,11 @@
-# Система генерации Python кода из R-схемы
+# Описание проекта
 
 Даный проект позволяет из текстового представления R-схемы получать искомый код на языке Python. Также реализуется сравнительный анализ с генерацией кода на языке Дракон.
 На первой итерации система позволяет генерироать алгоритмы, состоящие из управляющий конструкций: IF, FOR, WHILE.
 
 ## Пример генерации кода Python из R-схемы
-<div style="display: flex; justify-content: center;" markdown="block">
-<section markdown="block" style="margin-right: 20px;">
+<div style="display: flex; justify-content: center;">
+<section style="margin-right: 20px;">
 
 **R-схема:**
 
@@ -23,7 +23,7 @@ o-------->o
         <b>Диаграмма Дракон:</b><br>
         <img width="350px" src="img/drakon.png" alt="drakon language"/>
     </div>
-<section markdown="block" style="margin-right: 20px;">
+<section style="margin-right: 20px;">
 
 **Код на Python:**
 
