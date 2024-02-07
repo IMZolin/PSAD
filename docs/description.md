@@ -5,15 +5,7 @@
 
 ## Пример генерации кода Python из R-схемы
 
-<style>
-.box{
-    display: flex;
-    justify-content: center;"
-}
-.sub-box{
-    margin-right: 20px;
-}
-</style>
+<div>
 <div class="box">
 <div class="sub-box">
 
@@ -46,4 +38,13 @@ else:
 
 </div>
 </div>
-
+<style>
+.box{
+    display: flex;
+    justify-content: center;"
+}
+.sub-box{
+    margin-right: 20px;
+}
+</style>
+</div>
