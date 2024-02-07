@@ -4,11 +4,13 @@
 На первой итерации система позволяет генерироать алгоритмы, состоящие из управляющий конструкций: IF, FOR, WHILE.
 
 ## Пример генерации кода Python из R-схемы
+<div style="display: flex; justify-content: center;" markdown="block">
+<section markdown="block" style="margin-right: 20px;">
 
-R-схема:
+**R-схема:**
 
 ```
-     x
+    x
 o-------->o
 |   a=5   |
 |         |
@@ -16,11 +18,14 @@ o-------->o
     a=10
 ```
 
-Диаграмма Дракон:
+</section>
+<div style="margin-right: 25px;">
+        <b>Диаграмма Дракон:</b><br>
+        <img width="350px" src="img/drakon.png" alt="drakon language"/>
+    </div>
+<section markdown="block" style="margin-right: 20px;">
 
-<img width="400px" src="img/drakon.png" alt="golden ratio method"/>
-
-Код на Python:
+**Код на Python:**
 
 ```python
 if x:
@@ -28,3 +33,6 @@ if x:
 else:
     a = 10
 ```
+
+</section>
+</div>
