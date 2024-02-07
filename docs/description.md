@@ -8,43 +8,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="github-markdown.css">
 <style>
-	.box{
-    display: flex;
-    justify-content: center;"
-}
-    .sub-box{
-        margin-right: 20px;
-    }
+	.markdown-body {
+		box-sizing: border-box;
+		min-width: 200px;
+		max-width: 980px;
+		margin: 0 auto;
+		padding: 45px;
+	}
+
+	@media (max-width: 767px) {
+		.markdown-body {
+			padding: 15px;
+		}
+	}
 </style>
-<div class="box">
-<div class="sub-box">
-
-**R-схема:**
-
-```
-    x
-o-------->o
-|   a=5   |
-|         |
-|-------->|
-    a=10
-```
-
-</div>
-<div class="sub-box">
-        <b>Диаграмма Дракон:</b><br>
-        <img width="350px" src="img/drakon.png" alt="drakon language"/>
-    </div>
-<div class="sub-box">
-
-**Код на Python:**
-
-```python
-if x:
-    a = 5
-else:
-    a = 10
-```
-
-</div>
-</div>
+<article class="markdown-body">
+	<h1>Unicorns</h1>
+	<p>All the things</p>
+</article>
