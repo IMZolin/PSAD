@@ -4,3 +4,4 @@
 + [Модель использования](img/usecase.png)
 + [Описание проекта](description.md)
 + [Анализ осуществимости](analysis.md)
++ [Список литературы](references.md)
