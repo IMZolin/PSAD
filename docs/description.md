@@ -5,7 +5,7 @@
 
 ## Пример генерации кода Python из R-схемы
 <div style="display: flex; justify-content: center;">
-<section style="margin-right: 20px;">
+<div style="margin-right: 20px;">
 
 **R-схема:**
 
@@ -18,12 +18,12 @@ o-------->o
     a=10
 ```
 
-</section>
+</div>
 <div style="margin-right: 25px;">
         <b>Диаграмма Дракон:</b><br>
         <img width="350px" src="img/drakon.png" alt="drakon language"/>
     </div>
-<section style="margin-right: 20px;">
+<div style="margin-right: 20px;">
 
 **Код на Python:**
 
@@ -34,5 +34,6 @@ else:
     a = 10
 ```
 
-</section>
 </div>
+</div>
+
