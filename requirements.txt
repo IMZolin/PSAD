@@ -1,0 +1,2 @@
+flowchart~=0.0.1
+pyflowchart~=0.3.1
