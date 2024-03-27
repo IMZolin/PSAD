@@ -1,0 +1,23 @@
+TERMINALS:
+    number ::= '[0-9]+(.[0-9]*)?';
+    name ::= '[\w\D][\w]*';
+    string ::= '"(\\.|[^\\"]+)"';
+    code ::= '\{[^\}]*\}';
+    char_key ::= '/|\(|\)|,|;|\.|:|=|\->'.
+
+KEYS:
+    'VAR'; 'REQUIRED'; 'PROVIVED'; 'INNER';  'STATE';
+    'else'; 'false'; 'true'; '/'; '('; ')'; ','; '.'; ':'; '->'; '='.
+
+NONTERMINALS:
+    CIAO;
+    AUTOMATA_OBJECT;
+    VAR_BLOCK;
+    REQUIRED_BLOCK;
+    PROVIDED_BLOCK;
+    INNER_BLOCK;
+    FUNCTION;
+    STATE_BLOCK;
+    TRANSITION_DESCRIPTION.
+
+AXIOM: CIAO.

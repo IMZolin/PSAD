@@ -1,0 +1,24 @@
+FlipFlop
+
+VAR:
+    button = false.
+
+REQUIRED:
+    isItLightOutside();
+    turnOnLamp();
+    turnOffLamp().
+
+PROVIDED:
+    buttonPress(mode);
+    isButtonPressed().
+
+INNER:
+    printInfo(text).
+
+STATE:
+    entry -> / -> ready;
+    ready -> {self.button} / -> check;
+    check -> {isItLightOutside()} / -> error;
+    check -> else / {turnOnLamp()} -> wait;
+    wait -> {not self.button} / {turnOffLamp()} -> ready;
+    error -> / {self.__printInfo("It is light outside")} -> exit.

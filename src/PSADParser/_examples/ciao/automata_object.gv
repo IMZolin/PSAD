@@ -1,0 +1,27 @@
+digraph AUTOMATA_OBJECT {
+    start [label=AUTOMATA_OBJECT shape=plaintext]
+    A [label=name shape=diamond]
+    B [label=VAR_BLOCK shape=box]
+    C [label=REQUIRED_BLOCK shape=box]
+    D [label=PROVIDED_BLOCK shape=box]
+    E [label=INNER_BLOCK shape=box]
+    F [label=STATE_BLOCK shape=box]
+    end [label="" shape=point]
+    start -> A
+    A -> B [label="automataObject = AutomataObject($ATTRIBUTE$)"]
+    A -> C [label="automataObject = AutomataObject($ATTRIBUTE$)"]
+    A -> D [label="automataObject = AutomataObject($ATTRIBUTE$)"]
+    A -> E [label="automataObject = AutomataObject($ATTRIBUTE$)"]
+    A -> F [label="automataObject = AutomataObject($ATTRIBUTE$)"]
+    B -> C [label="automataObject.AddVars($ATTRIBUTE$)"]
+    B -> D [label="automataObject.AddVars($ATTRIBUTE$)"]
+    B -> E [label="automataObject.AddVars($ATTRIBUTE$)"]
+    B -> F [label="automataObject.AddVars($ATTRIBUTE$)"]
+    C -> D
+    C -> E
+    C -> F
+    D -> E
+    D -> F
+    E -> F
+    F -> end [label="print(str(automataObject))"]
+}
