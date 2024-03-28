@@ -1,0 +1,21 @@
+digraph TYPE{
+    start [label=TYPE shape=plaintext]
+    array [label=TYPE_ARRAY shape=box]
+    struct [label=TYPE_STRUCT shape=box]
+    int [label=integer shape=oval]
+    str [label=string shape=oval]
+    char [label=char shape=oval]
+    end [label="" shape=point]
+
+    start -> array
+    start -> struct
+    start -> int
+    start -> str
+    start -> char
+
+    array -> end
+    struct -> end
+    int -> end
+    str -> end
+    char -> end
+}
