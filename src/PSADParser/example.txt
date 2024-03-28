@@ -1,1 +1,1 @@
-func(GCD, (a, b), if(b=0, assign(res,a), assign(res,GCD(b, a mod b))), return res)
+func()

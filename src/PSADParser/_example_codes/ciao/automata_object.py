@@ -120,7 +120,7 @@ class AutomataObject:
             requiredStr = "No"
         else:
             for required in self.requireds:
-                requiredStr = requiredStr + '\n' + shift + f"# {required.name}"
+                requiredStr = requiredStr + '\n' + shift + f"# {required.word}"
 
         with open(templateDirectory / methodTemplateName, 'r') as templateFile:
             methodTemplate = templateFile.read()
@@ -128,13 +128,13 @@ class AutomataObject:
         innerStr = ""
         for inner in self.inners:
             innerStr = innerStr + methodTemplate.format(
-                name = "__" + inner.name,
+                name = "__" + inner.word,
                 args=AutomataObject.__SeparatedArray(inner.args))
 
         providedStr = ""
         for provided in self.provideds:
             providedStr = providedStr + methodTemplate.format(
-                name = provided.name,
+                name = provided.word,
                 args=AutomataObject.__SeparatedArray(provided.args))
 
         with open(templateDirectory / endStateTemplateName, 'r') as templateFile:

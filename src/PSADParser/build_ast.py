@@ -22,7 +22,7 @@ def __RenderTokenStream(diagramName, tokenList, debugInfoDir):
     for token in tokenList:
         if Token.Type.TERMINAL == token.type:
             h.node(str(i),
-                   f"TERMINAL\ntype: {token.terminalType.name}\nstring: {token.str}" + (f"\nattribute: {token.attribute}" if token.attribute else ""),
+                   f"TERMINAL\ntype: {token.terminalType.word}\nstring: {token.str}" + (f"\nattribute: {token.attribute}" if token.attribute else ""),
                    shape='diamond')
         elif Token.Type.KEY == token.type:
             h.node(str(i), f"KEY\nstring: {token.str}" + (f"\nattribute: {token.attribute}" if token.attribute else ""), shape='oval')
@@ -52,7 +52,7 @@ def __RenderAst(diagramName, ast, debugInfoDir):
             token = node[0].token
             if Token.Type.TERMINAL == token.type:
                 h.node(str(i),
-                       f"TERMINAL\ntype: {token.terminalType.name}\nstring: {token.str}" + (f"\nattribute: {token.attribute}" if token.attribute else ""),
+                       f"TERMINAL\ntype: {token.terminalType.word}\nstring: {token.str}" + (f"\nattribute: {token.attribute}" if token.attribute else ""),
                        shape='diamond')
             elif Token.Type.KEY == token.type:
                 h.node(str(i), f"KEY\nstring: {token.str}" + (f"\nattribute: {token.attribute}" if token.attribute else ""), shape='oval')

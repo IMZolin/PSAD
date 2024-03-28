@@ -39,7 +39,7 @@ def Afterscan(tokenList):
             elif token.str == "true":
                 token.attribute = True
             continue
-        if dsl_info.Terminal.name == token.terminalType:
+        if dsl_info.Terminal.word == token.terminalType:
             token.attribute = token.str
         elif dsl_info.Terminal.string == token.terminalType:
             token.attribute = token.str[1:-1]

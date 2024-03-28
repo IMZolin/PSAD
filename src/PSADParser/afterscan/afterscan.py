@@ -82,7 +82,7 @@ def Afterscan(tokenList):
     for token in tmp:
         if token.type != Token.Type.TERMINAL:
             continue
-        if dsl_info.Terminal.name == token.terminalType or dsl_info.Terminal.string == token.terminalType:
+        if dsl_info.Terminal.word == token.terminalType or dsl_info.Terminal.string == token.terminalType:
             token.attribute = token.str
 
     return tmp

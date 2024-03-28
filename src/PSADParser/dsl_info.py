@@ -2,54 +2,75 @@ from enum import Enum
 
 
 class Terminal(Enum):
-    name = "name"
+    word = "word"
     char_sequence = "char_sequence"
-    string = "string"
 
 
 tokenRegularExpressions = [
-    (Terminal.name, r"[\w^\d][\w]*"),
-    (Terminal.char_sequence, r"[^'\w\s]+"),
-    (Terminal.string, r"'(\\.|[^\\']+)*'")
+    (Terminal.word, r"[\w\+\*-/%]+"),
+    (Terminal.char_sequence, r"[\(\),]"),
 ]
 
 
 keys = [
-    ("TERMINALS", Terminal.name),
-    ("KEYS", Terminal.name),
-    ("NONTERMINALS", Terminal.name),
-    ("AXIOM", Terminal.name),
-    ("RULES", Terminal.name),
-    ("ERRORS", Terminal.name),
-    (".", Terminal.char_sequence),
-    (":", Terminal.char_sequence),
-    ("::=", Terminal.char_sequence),
-    (";", Terminal.char_sequence),
+    ("algorithm", Terminal.word),
+    ("return", Terminal.word),
+    ("yield", Terminal.word),
+    ("func", Terminal.word),
+    ("proc", Terminal.word),
+    ("iter", Terminal.word),
+    ("assign", Terminal.word),
+    ("next for", Terminal.word),
+    ("exit for", Terminal.word),
+    ("goto", Terminal.word),
+    ("define", Terminal.word),
+    ("comment", Terminal.word),
+    ("integer", Terminal.word),
+    ("string", Terminal.word),
+    ("char", Terminal.word),
+    ("array", Terminal.word),
+    ("struct", Terminal.word),
+    ("if", Terminal.word),
+    ("for", Terminal.word),
+    ("while", Terminal.word),
+    ("repeat", Terminal.word),
+    (",", Terminal.char_sequence),
     ("(", Terminal.char_sequence),
     (")", Terminal.char_sequence),
-    ("|", Terminal.char_sequence),
-    ("[", Terminal.char_sequence),
-    ("]", Terminal.char_sequence),
-    ("{", Terminal.char_sequence),
-    ("}", Terminal.char_sequence),
-    ("#", Terminal.char_sequence),
 ]
 
 
 class Nonterminal(Enum):
-    GRAMMAR = 'GRAMMAR'
-    TERMINALS_BLOCK = 'TERMINALS_BLOCK'
-    KEYS_BLOCK = 'KEYS_BLOCK'
-    NONTERMINALS_BLOCK = 'NONTERMINALS_BLOCK'
-    AXIOM_BLOCK = 'AXIOM_BLOCK'
-    ERROR_BLOCK = 'ERROR_BLOCK'
-    RULES_BLOCK = 'RULES_BLOCK'
-    RULE = 'RULE'
-    RHS = 'RHS'
-    SEQUENCE = 'SEQUENCE'
-    BRACKETS = 'BRACKETS'
-    OPTIONAL = 'OPTIONAL'
-    TSEITIN_ITERATION = 'TSEITIN_ITERATION'
+    DEFINITION = 'DEFINITION'
+    INPUT = 'INPUT'
+    ASSIGNMENT = 'ASSIGNMENT'
+    ALG_UNIT = 'ALG_UNIT'
+    WHILE = 'WHILE'
+    FLOW_STRUCTURE = 'FLOW_STRUCTURE'
+    ITERATOR = 'ITERATOR'
+    FRAGMENT = 'FRAGMENT'
+    REPEAT = 'REPEAT'
+    RETURN = 'RETURN'
+    CODE_BLOCK = 'CODE_BLOCK'
+    OUTPUT = 'OUTPUT'
+    FUNCTION = 'FUNCTION'
+    BRANCHING = 'BRANCHING'
+    FOR = 'FOR'
+    YIELD = 'YIELD'
+    NAME = 'NAME'
+    COMMENT = 'COMMENT'
+    TYPE_ARRAY = 'TYPE_ARRAY'
+    S = 'S'
+    ALG = 'ALG'
+    CYCLE = 'CYCLE'
+    RETURN_TYPE = 'RETURN_TYPE'
+    OPERATOR = 'OPERATOR'
+    PROCEDURE = 'PROCEDURE'
+    TYPE = 'TYPE'
+    TYPE_STRUCT = 'TYPE_STRUCT'
+    TRANSITION = 'TRANSITION'
+    PARAM_LIST = 'PARAM_LIST'
+    STATEMENT = 'STATEMENT'
 
 
-axiom = Nonterminal.GRAMMAR
+axiom = Nonterminal.S

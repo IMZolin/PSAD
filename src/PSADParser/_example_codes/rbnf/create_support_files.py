@@ -149,7 +149,7 @@ class Digraph:
         with open(fileName, "w") as file:
             file.write(f"digraph {self.name} {{\n")
             for node in self.nodes:
-                file.write(f"    {node.name}")
+                file.write(f"    {node.word}")
                 if 0 != len(node.labels):
                     file.write(" [")
                     space = ""
@@ -159,7 +159,7 @@ class Digraph:
                     file.write("]")
                 file.write("\n")
             for edge in self.edges:
-                file.write(f"    {edge.src.name} -> {edge.dst.name}\n")
+                file.write(f"    {edge.src.word} -> {edge.dst.word}\n")
             file.write("}\n")
 
 dotDir = pathDirectory / "dot"
