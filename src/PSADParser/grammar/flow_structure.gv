@@ -1,0 +1,11 @@
+digraph FLOW_STRUCTURE {
+    start [label=FLOW_STRUCTURE shape=plaintext]
+    if [label=BRANCHING shape=box]
+    cycle [label=CYCLE shape=box]
+    end [label="" shape=point]
+
+    start -> if
+    start -> cycle
+    if -> end
+    cycle -> end
+}

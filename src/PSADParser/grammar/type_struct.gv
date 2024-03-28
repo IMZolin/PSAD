@@ -1,0 +1,21 @@
+digraph TYPE_STRUCT{
+    start [label=TYPE_STRUCT shape=plaintext]
+    struct [label=struct shape=oval]
+    open [label="(" shape=oval]
+    name [label=NAME shape=box]
+    type [label=TYPE shape=box]
+    statement [label=STATEMENT shape=box]
+    close [label=")" shape=oval]
+    comma [label="," shape=oval]
+    end [label="" shape=point]
+
+    start -> struct
+    struct -> open
+    open -> name
+    name -> comma
+    comma -> type
+    comma -> statement
+    type -> close
+    statement -> close
+    close -> end
+}

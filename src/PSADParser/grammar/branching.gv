@@ -1,0 +1,25 @@
+digraph BRANCHING{
+    start [label=BRANCHING shape=plaintext]
+    if [label=if shape=oval]
+    statement [label=STATEMENT shape=box]
+    oper_true [label=OPERATOR shape=box]
+    oper_else [label=OPERATOR shape=box]
+    open [label="(" shape=oval]
+    comma_true [label="," shape=oval]
+    comma_else [label="," shape=oval]
+    close [label=")" shape=oval]
+    end [label="" shape=point]
+
+    start -> if
+    if -> open
+    open -> statement
+    statement -> comma_true
+    comma_true -> oper_true
+    oper_true -> oper_true
+    oper_true -> comma_else
+    comma_else -> oper_else
+    comma_else -> close
+    oper_else -> oper_else
+    oper_else -> close
+    close -> end
+}

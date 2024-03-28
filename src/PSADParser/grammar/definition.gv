@@ -1,0 +1,18 @@
+digraph DEFINITION {
+    start [label=DEFINITION shape=plaintext]
+    define [label=define shape=oval]
+    open [label="(" shape=oval]
+    name [label=NAME shape=box]
+    comma [label="," shape=oval]
+    type [label=TYPE shape=box]
+    close [label=")" shape=oval]
+    end [label="" shape=point]
+
+    start -> define
+    define -> open
+    open -> name
+    name -> comma
+    comma -> type
+    type -> close
+    close -> end
+}

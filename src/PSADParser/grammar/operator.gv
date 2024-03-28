@@ -1,0 +1,23 @@
+digraph OPERATOR {
+    start [label=OPERATOR shape=plaintext]
+    flow_structure [label=FLOW_STRUCTURE shape=box]
+    assignment [label=ASSIGNMENT shape=box]
+    definition [label=DEFINITION shape=box]
+    statement [label=STATEMENT shape=box]
+    transition [label=TRANSITION shape=box]
+    comment [label=COMMENT shape=box]
+    end [label="" shape=point]
+
+    start -> flow_structure
+    start -> assignment
+    start -> definition
+    start -> statement
+    start -> transition
+    start -> comment
+    flow_structure -> end
+    assignment -> end
+    definition -> end
+    statement -> end
+    transition -> end
+    comment -> end
+}

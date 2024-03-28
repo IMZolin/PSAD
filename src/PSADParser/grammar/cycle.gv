@@ -1,0 +1,14 @@
+digraph CYCLE{
+    start [label=CYCLE shape=plaintext]
+    for [label=FOR shape=box]
+    while [label=WHILE shape=box]
+    repeat [label=REPEAT shape=box]
+    end [label="" shape=point]
+
+    start -> for
+    start -> while
+    start -> repeat
+    for -> end
+    while -> end
+    repeat -> end
+}

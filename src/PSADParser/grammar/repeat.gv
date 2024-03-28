@@ -1,0 +1,19 @@
+digraph REPEAT{
+    start [label=REPEAT shape=plaintext]
+    repeat [label=repeat shape=oval]
+    statement [label=STATEMENT shape=box]
+    oper [label=OPERATOR shape=box]
+    open [label="(" shape=oval]
+    comma [label="," shape=oval]
+    close [label=")" shape=oval]
+    end [label="" shape=point]
+
+    start -> repeat
+    repeat -> open
+    open -> statement
+    statement -> comma
+    comma -> oper
+    oper -> oper
+    oper -> close
+    close -> end
+}

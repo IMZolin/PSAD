@@ -1,0 +1,18 @@
+digraph ASSIGNMENT {
+    start [label=ASSIGNMENT shape=plaintext]
+    assign [label=assign shape=oval]
+    open [label="(" shape=oval]
+    statement_left [label=STATEMENT shape=box]
+    comma [label="," shape=oval]
+    statement_right [label=STATEMENT shape=box]
+    close [label=")" shape=oval]
+    end [label="" shape=point]
+
+    start -> assign
+    assign -> open
+    open -> statement_left
+    statement_left -> comma
+    comma -> statement_right
+    statement_right -> close
+    close -> end
+}

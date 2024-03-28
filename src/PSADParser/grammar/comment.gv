@@ -1,0 +1,14 @@
+digraph COMMENT {
+    start [label=COMMENT shape=plaintext]
+    comment [label=comment shape=oval]
+    open [label="(" shape=oval]
+    statement [label=STATEMENT shape=box]
+    close [label=")" shape=oval]
+    end [label="" shape=point]
+
+    start -> comment
+    comment -> open
+    open -> statement
+    statement -> close
+    close -> end
+}
