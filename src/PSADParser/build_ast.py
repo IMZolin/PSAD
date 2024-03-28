@@ -1,5 +1,3 @@
-#-c C:\Users\Le\Desktop\expr.txt -j C:\Users\Le\Desktop\AppMath\DiaDeL\CODE\dsl_generator\_examples\expression\expression.json
-
 from scanner import Tokenize
 from afterscan import Afterscan
 from dsl_token import *

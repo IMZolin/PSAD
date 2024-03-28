@@ -7,7 +7,9 @@ digraph CODE_BLOCK {
     start -> alg_unit
     start -> operator
     alg_unit -> alg_unit
+    alg_unit -> operator
     operator -> operator
+    operator -> alg_unit
     alg_unit -> end
     operator -> end
 }
