@@ -7,7 +7,7 @@ class Terminal(Enum):
 
 
 tokenRegularExpressions = [
-    (Terminal.word, r"[\w\+\*-/%]+"),
+    (Terminal.word, r'[a-zA-Z0-9_+*/\-=]+'),
     (Terminal.char_sequence, r"[\(\),]"),
 ]
 

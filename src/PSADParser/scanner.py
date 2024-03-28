@@ -43,4 +43,4 @@ if __name__ == "__main__":
         tokenList = Tokenize(file.read())
         print("tokens:")
         for token in tokenList:
-            print(f"TYPE: '{token.terminalType.word}', STRING: '{token.str}'.")
+            print(f"TYPE: '{token.terminalType}', STRING: '{token.str}'.")
