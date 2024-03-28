@@ -1,1 +1,4 @@
-func(GCD, (a, b), if(b=0, assign(res,a), assign(res,GCD(b, a mod b))), return res)
+func(GCD, ((a), (b),), a=5 , return res)
+5+5
+iter(GCD, ((a), (b),), a=5 , yield res)
+print

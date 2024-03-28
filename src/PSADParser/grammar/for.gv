@@ -4,16 +4,18 @@ digraph FOR{
     statement [label=STATEMENT shape=box]
     oper [label=OPERATOR shape=box]
     open [label="(" shape=oval]
-    comma [label="," shape=oval]
+    comma_1 [label="," shape=oval]
+    comma_2 [label="," shape=oval]
     close [label=")" shape=oval]
     end [label="" shape=point]
 
     start -> for
     for -> open
     open -> statement
-    statement -> comma
-    comma -> oper
-    oper -> oper
+    statement -> comma_1
+    comma_1 -> oper
+    oper -> comma_2
+    comma_2 -> oper
     oper -> close
     close -> end
 }
