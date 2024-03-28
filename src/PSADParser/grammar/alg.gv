@@ -1,0 +1,28 @@
+digraph ALG {
+    start [label=ALG shape=plaintext]
+    algorithm [label=algorithm shape=oval]
+    br_open [label="(" shape=oval]
+    br_close [label=")" shape=oval]
+    name [label=NAME shape=box]
+    comma_1 [label="," shape=oval]
+    comma_2 [label="," shape=oval]
+    comma_3 [label="," shape=oval]
+    name [label=NAME shape=box]
+    input [label=INPUT shape=box]
+    code_block [label=CODE_BLOCK shape=box]
+    output [label=OUTPUT shape=box]
+    end [label="" shape=point]
+
+    start -> algorithm
+    algorithm -> br_open
+    br_open -> name
+    name -> comma_1
+    comma_1 -> input
+    input -> comma_2
+    comma_2 -> code_block
+    code_block -> comma_3
+    comma_3 -> output
+    output -> br_close
+    comma_3 -> br_close
+    br_close -> end
+}

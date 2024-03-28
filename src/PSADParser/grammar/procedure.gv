@@ -1,0 +1,23 @@
+digraph PROCEDURE {
+    start [label=PROCEDURE shape=plaintext]
+    proc [label=proc shape=oval]
+    br_open [label="(" shape=oval]
+    br_close [label=")" shape=oval]
+    name [label=NAME shape=box]
+    comma_1 [label="," shape=oval]
+    comma_2 [label="," shape=oval]
+    input [label=INPUT shape=box]
+    operator [label=OPERATOR shape=box]
+    end [label="" shape=point]
+
+    start -> proc
+    proc -> br_open
+    br_open -> name
+    name -> comma_1
+    comma_1 -> input
+    input -> comma_2
+    comma_2 -> operator
+    operator -> operator
+    operator -> br_close
+    br_close -> end
+}

@@ -1,0 +1,13 @@
+{
+    "syntax": {
+        "type": "virt",
+        "info": {
+            "supportInfo": "grammar/grammar.sgi",
+            "diagrams": "grammar"
+        }
+    },
+    "semantics": {
+        "type": "virt"
+    },
+    "debugInfoDir": "_debug"
+}

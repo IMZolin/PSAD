@@ -1,0 +1,8 @@
+digraph OUTPUT {
+    start [label=OUTPUT shape=plaintext]
+    return_type [label=RETURN_TYPE shape=box]
+    end [label="" shape=point]
+
+    start -> return_type
+    return_type -> end
+}

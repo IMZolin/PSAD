@@ -1,0 +1,14 @@
+digraph ALG_UNIT {
+    start [label=ALG_UNIT shape=plaintext]
+    function [label=FUNCTION shape=box]
+    procedure [label=PROCEDURE shape=box]
+    iterator [label=ITERATOR shape=box]
+    end [label="" shape=point]
+
+    start -> function
+    start -> procedure
+    start -> iterator
+    function -> end
+    procedure -> end
+    iterator -> end
+}

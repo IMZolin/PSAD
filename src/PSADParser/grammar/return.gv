@@ -1,0 +1,10 @@
+digraph RETURN {
+    start [label=RETURN shape=plaintext]
+    return [label="return" shape=oval]
+    statement [label=STATEMENT shape=box]
+    end [label="" shape=point]
+
+    start -> return
+    return -> statement
+    statement -> end
+}
