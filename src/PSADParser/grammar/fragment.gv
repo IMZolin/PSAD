@@ -1,0 +1,8 @@
+digraph FRAGMENT {
+    start [label=FRAGMENT shape=plaintext]
+    code_block [label=CODE_BLOCK shape=box]
+    end [label="" shape=point]
+
+    start -> code_block
+    code_block -> end
+}

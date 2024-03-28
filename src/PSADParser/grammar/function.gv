@@ -1,0 +1,27 @@
+digraph FUNCTION {
+    start [label=FUNCTION shape=plaintext]
+    func [label=func shape=oval]
+    br_open [label="(" shape=oval]
+    br_close [label=")" shape=oval]
+    name [label=NAME shape=box]
+    comma_1 [label="," shape=oval]
+    comma_2 [label="," shape=oval]
+    comma_3 [label="," shape=oval]
+    input [label=INPUT shape=box]
+    operator [label=OPERATOR shape=box]
+    return [label=RETURN shape=box]
+    end [label="" shape=point]
+
+    start -> func
+    func -> br_open
+    br_open -> name
+    name -> comma_1
+    comma_1 -> input
+    input -> comma_2
+    comma_2 -> operator
+    operator -> operator
+    operator -> comma_3
+    comma_3 -> return
+    return -> br_close
+    br_close -> end
+}

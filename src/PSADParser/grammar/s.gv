@@ -1,0 +1,11 @@
+digraph S {
+    start [label=S shape=plaintext]
+    alg [label=ALG shape=box]
+    fragment [label=FRAGMENT shape=box]
+    end [label="" shape=point]
+
+    start -> alg
+    start -> fragment
+    alg -> end
+    fragment -> end
+}

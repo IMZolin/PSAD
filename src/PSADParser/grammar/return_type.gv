@@ -1,0 +1,11 @@
+digraph RETURN_TYPE {
+    start [label=RETURN_TYPE shape=plaintext]
+    return [label=RETURN shape=box]
+    yield [label=YIELD shape=box]
+    end [label="" shape=point]
+
+    start -> return
+    start -> yield
+    return -> end
+    yield -> end
+}
