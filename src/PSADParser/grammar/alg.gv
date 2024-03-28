@@ -23,6 +23,6 @@ digraph ALG {
     code_block -> comma_3
     comma_3 -> output
     output -> br_close
-    code_block -> br_close
+    comma_3 -> br_close
     br_close -> end
 }
