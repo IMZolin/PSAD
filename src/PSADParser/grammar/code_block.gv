@@ -6,6 +6,8 @@ digraph CODE_BLOCK {
 
     start -> alg_unit
     start -> operator
+    alg_unit -> alg_unit
+    operator -> operator
     alg_unit -> end
     operator -> end
 }
