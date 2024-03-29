@@ -10,3 +10,5 @@
 + [Документация](docs)
 * [Код](src)
   * [PSADParser](src/PSADParser) - Парсер псевдокода в AST
+
++ Ссылка на инструмент создания языков предметной области (А. Воротников): https://github.com/aVorotnikov/dsl_analyzer
