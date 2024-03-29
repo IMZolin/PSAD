@@ -7,7 +7,7 @@ class Terminal(Enum):
 
 
 tokenRegularExpressions = [
-    (Terminal.word, r'[a-zA-Z0-9_+*/\-=]+'),
+    (Terminal.word, r'[a-zA-Z0-9_+*/\-=\.]+'),
     (Terminal.char_sequence, r"[\(\),]"),
 ]
 
@@ -16,6 +16,7 @@ keys = [
     ("algorithm", Terminal.word),
     ("return", Terminal.word),
     ("yield", Terminal.word),
+    ("call", Terminal.word),
     ("func", Terminal.word),
     ("proc", Terminal.word),
     ("iter", Terminal.word),
@@ -46,6 +47,7 @@ class Nonterminal(Enum):
     ASSIGNMENT = 'ASSIGNMENT'
     ALG_UNIT = 'ALG_UNIT'
     WHILE = 'WHILE'
+    CALL = 'CALL'
     FLOW_STRUCTURE = 'FLOW_STRUCTURE'
     ITERATOR = 'ITERATOR'
     FRAGMENT = 'FRAGMENT'

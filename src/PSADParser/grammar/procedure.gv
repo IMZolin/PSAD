@@ -17,7 +17,7 @@ digraph PROCEDURE {
     comma_1 -> input
     input -> comma_2
     comma_2 -> operator
-    operator -> operator
+    operator -> comma_2
     operator -> br_close
     br_close -> end
 }

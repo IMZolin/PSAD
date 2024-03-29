@@ -1,0 +1,18 @@
+digraph CALL {
+    start [label=CALL shape=plaintext]
+    call [label=call shape=oval]
+    open [label="(" shape=oval]
+    name [label=NAME shape=box]
+    comma [label="," shape=oval]
+    input [label=INPUT shape=box]
+    close [label=")" shape=oval]
+    end [label="" shape=point]
+
+    start -> call
+    call -> open
+    open -> name
+    name -> comma
+    comma -> input
+    input -> close
+    close -> end
+}

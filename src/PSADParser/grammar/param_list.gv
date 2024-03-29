@@ -1,16 +1,12 @@
 digraph PARAM_LIST {
     start [label=PARAM_LIST shape=plaintext]
-    br_open [label="(" shape=oval]
-    br_close [label=")" shape=oval]
     statement [label=STATEMENT shape=box]
     comma [label="," shape=oval]
     end [label="" shape=point]
 
-    start -> br_open
-    br_open -> statement
-    statement -> br_close
-    br_close -> comma
-    comma -> br_open
-    comma -> end
+    start -> statement
+    statement -> comma
+    comma -> statement
+    statement -> end
     start -> end
 }

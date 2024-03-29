@@ -1,0 +1,7 @@
+func(GCD, (a, b),
+    if(b=0,
+        (assign(res,a)),
+        (assign(res,call(GCD, (b, a mod b))))
+    ),
+    return res
+)

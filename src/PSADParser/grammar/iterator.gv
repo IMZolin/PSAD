@@ -19,8 +19,8 @@ digraph ITERATOR {
     comma_1 -> input
     input -> comma_2
     comma_2 -> operator
-    operator -> operator
     operator -> comma_3
+    comma_3 -> operator
     comma_3 -> yield
     yield -> br_close
     br_close -> end

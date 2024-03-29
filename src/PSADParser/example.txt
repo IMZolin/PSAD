@@ -1,4 +1,3 @@
-func(GCD, ((a), (b),), a=5 , return res)
-5+5
-iter(GCD, ((a), (b),), a=5 , yield res)
-print
+if(call(r.p,(d)),
+    (r), ()
+)
