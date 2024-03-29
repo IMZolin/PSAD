@@ -3,13 +3,14 @@ digraph CODE_BLOCK {
     alg_unit [label=ALG_UNIT shape=box]
     operator [label=OPERATOR shape=box]
     end [label="" shape=point]
+    comma [label="," shape=oval]
 
     start -> alg_unit
     start -> operator
-    alg_unit -> alg_unit
-    alg_unit -> operator
-    operator -> operator
-    operator -> alg_unit
+    alg_unit -> comma
+    comma -> alg_unit
+    comma -> operator
+    operator -> comma
     alg_unit -> end
     operator -> end
 }

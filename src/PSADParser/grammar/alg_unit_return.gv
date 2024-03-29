@@ -1,5 +1,5 @@
-digraph RETURN_TYPE {
-    start [label=RETURN_TYPE shape=plaintext]
+digraph ALG_UNIT_RETURN {
+    start [label=ALG_UNIT_RETURN shape=plaintext]
     return [label=RETURN shape=box]
     yield [label=YIELD shape=box]
     end [label="" shape=point]

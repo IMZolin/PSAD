@@ -1,6 +1,6 @@
 digraph OUTPUT {
     start [label=OUTPUT shape=plaintext]
-    return_type [label=RETURN_TYPE shape=box]
+    return_type [label=ALG_UNIT_RETURN shape=box]
     end [label="" shape=point]
 
     start -> return_type
