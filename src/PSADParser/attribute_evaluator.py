@@ -31,7 +31,6 @@ def operator_preparer(child_params: list[NodeParams]) -> NodeParams:
 
 def code_block_preparer(child_params: list[NodeParams]) -> NodeParams:
     first_child_param, *other_childs_params = child_params
-    print
     head = first_child_param.head
     current_rows = first_child_param.rows or []
     current_tail = first_child_param.tail or head
