@@ -3,8 +3,8 @@ from afterscan import Afterscan
 from dsl_token import *
 from syntax import *
 import dsl_info
-# import attributor
-# import attribute_evaluator
+import attributor
+import attribute_evaluator
 
 import graphviz
 from argparse import ArgumentParser
@@ -99,14 +99,16 @@ with open(args.codeFile, 'r') as codeFile:
     code = codeFile.read()
 
 tokenList = Tokenize(code)
-__RenderTokenStream('token_stream_after_scanner', tokenList, debugInfoDir)
+#__RenderTokenStream('token_stream_after_scanner', tokenList, debugInfoDir)
 tokenList = Afterscan(tokenList)
-__RenderTokenStream('token_stream_after_afterscan', tokenList, debugInfoDir)
+#__RenderTokenStream('token_stream_after_afterscan', tokenList, debugInfoDir)
 
 ast = BuildAst(syntaxInfo, dsl_info.axiom, tokenList)
-__RenderAst('ast', ast, debugInfoDir)
-# attributor.SetAttributes(ast, attribute_evaluator.attributesMap)
-# __RenderAst('ast_attributed', ast, debugInfoDir)
+#__RenderAst('ast', ast, debugInfoDir)
+attributor.SetAttributes(ast, attribute_evaluator.attributesMap)
+__RenderAst('ast_attributed', ast, debugInfoDir)
+print('\n'.join(ast.attribute.rows))
+
 
 if debugInfoDir is not None and "semantics" in jsonData and "virt" == jsonData["semantics"]["type"]:
     rCode = __GetRCode(ast)

@@ -1,5 +1,6 @@
 import dsl_info
-from dsl_token import *
+from dsl_token import Token
+from models import NodeParams
 
 
 def __ReplaceOneToken(tokenList, converter):
@@ -29,7 +30,6 @@ def Afterscan(tokenList):
             terminalMap[keyInfo[1]].append(keyInfo[0])
 
     tmp = __ReplaceOneToken(tokenList, lambda token: __ReplaceKeywords(terminalMap, token))
-    # for token in tmp:
-    #     if Token.Type.TERMINAL == token.type and dsl_info.Terminal.number == token.terminalType:
-    #         token.attribute = int(token.str)
+    for token in tmp:
+        token.attribute = NodeParams(text=token.str)
     return tmp
