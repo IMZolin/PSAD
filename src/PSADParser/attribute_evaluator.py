@@ -31,12 +31,14 @@ def operator_preparer(child_params: list[NodeParams]) -> NodeParams:
 
 def code_block_preparer(child_params: list[NodeParams]) -> NodeParams:
     first_child_param, *other_childs_params = child_params
-
+    print
     head = first_child_param.head
-    current_rows = first_child_param.rows
-    current_tail = first_child_param.tail
+    current_rows = first_child_param.rows or []
+    current_tail = first_child_param.tail or head
 
     for child_param in other_childs_params:
+        if child_param.is_key:
+            continue
         conection_row = create_connection_row(current_tail, child_param.head)
         current_rows.append(conection_row)
         current_tail = (
@@ -66,7 +68,7 @@ def s_preparer(child_params: list[NodeParams]) -> NodeParams:
     end_entity = DiadelEntity(name='end', id=get_id())
 
     start_row = create_connection_row(start_entity, child_param.head)
-    end_row = create_connection_row(child_param.head, end_entity)
+    end_row = create_connection_row(child_param.tail, end_entity)
 
     rows = [
         start_row,

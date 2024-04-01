@@ -31,5 +31,8 @@ def Afterscan(tokenList):
 
     tmp = __ReplaceOneToken(tokenList, lambda token: __ReplaceKeywords(terminalMap, token))
     for token in tmp:
-        token.attribute = NodeParams(text=token.str)
+        token.attribute = NodeParams(
+            text=token.str,
+            is_key=token.type == Token.Type.KEY
+        )
     return tmp
