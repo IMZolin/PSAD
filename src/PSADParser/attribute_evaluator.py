@@ -53,7 +53,7 @@ def code_block_preparer(child_params: list[NodeParams]) -> NodeParams:
     )
 
 
-def fragment_preparer(child_params: list[NodeParams]) -> NodeParams:
+def pass_forward(child_params: list[NodeParams]) -> NodeParams:
     assert len(child_params) == 1
 
     return child_params[0]
@@ -82,10 +82,38 @@ def s_preparer(child_params: list[NodeParams]) -> NodeParams:
     )
 
 
+def return_preparer(child_params: list[NodeParams]) -> NodeParams:
+    assert len(child_params) == 2
+
+    return NodeParams(
+        head=DiadelEntity(
+            name='action',
+            id=get_id(),
+            text=' '.join(params.text for params in child_params),
+        )
+    )
+
+
+def transition_preparer(child_params: list[NodeParams]) -> NodeParams:
+    assert len(child_params) == 1
+
+    return NodeParams(
+        head=DiadelEntity(
+            name='action',
+            id=get_id(),
+            text=child_params[0].text
+        )
+    )
+
+
 attributesMap = {
     Nonterminal.STATEMENT: statement_preparer,
     Nonterminal.OPERATOR: operator_preparer,
     Nonterminal.CODE_BLOCK: code_block_preparer,
-    Nonterminal.FRAGMENT: fragment_preparer,
+    Nonterminal.FRAGMENT: pass_forward,
+    Nonterminal.ALG_UNIT_RETURN: pass_forward,
     Nonterminal.S: s_preparer,
+    Nonterminal.RETURN: return_preparer,
+    Nonterminal.YIELD: return_preparer,
+    Nonterminal.TRANSITION: transition_preparer,
 }
