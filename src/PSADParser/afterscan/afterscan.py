@@ -32,7 +32,14 @@ def Afterscan(tokenList):
     tmp = __ReplaceOneToken(tokenList, lambda token: __ReplaceKeywords(terminalMap, token))
     for token in tmp:
         token.attribute = NodeParams(
-            text=token.str,
+            text=(
+                token.str
+                if token.terminalType != dsl_info.Terminal.other
+                else ' '.join(
+                    word.removeprefix('@@{').removesuffix('}')
+                    for word in token.str.split()
+                )
+            ),
             is_key=token.type == Token.Type.KEY
         )
     return tmp

@@ -4,11 +4,13 @@ from enum import Enum
 class Terminal(Enum):
     word = "word"
     char_sequence = "char_sequence"
+    other = 'other'
 
 
 tokenRegularExpressions = [
     (Terminal.word, r'[a-zA-Z0-9_+*/\-=\.]+'),
-    (Terminal.char_sequence, r"[\(\),]"),
+    (Terminal.char_sequence, r'[\(\),]'),
+    (Terminal.other, r'@@{.*}')
 ]
 
 

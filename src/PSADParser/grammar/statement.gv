@@ -1,9 +1,13 @@
 digraph STATEMENT{
     start [label=STATEMENT shape=plaintext]
     word [label=word shape=diamond]
+    other [label=other shape=diamond]
     end [label="" shape=point]
 
     start -> word
+    start -> other
+    other -> other
+    other -> end
     word -> word
     word -> end
 }
