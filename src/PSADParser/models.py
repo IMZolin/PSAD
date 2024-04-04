@@ -12,9 +12,12 @@ class DiadelEntity:
         params = ', '.join(
             (
                 f'id={self.id}',
-                f'text={self.text}' if self.text else ''
+                f'text="{self.text}"' if self.text else ''
             )
         )
+
+        if params.endswith(', '):
+            params = params[:-2]
 
         return f'{self.name}{{{params}}}'
 
