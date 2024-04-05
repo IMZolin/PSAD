@@ -2,6 +2,7 @@ digraph TRANSITION {
     start [label=TRANSITION shape=plaintext]
     next_for [label="next for" shape=oval]
     exit_for [label="exit for" shape=oval]
+    goto [label="goto" shape=oval]
     end [label="" shape=point]
 
     start -> next_for

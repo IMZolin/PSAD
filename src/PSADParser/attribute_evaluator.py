@@ -106,6 +106,89 @@ def transition_preparer(child_params: list[NodeParams]) -> NodeParams:
     )
 
 
+def get_child_chain(child_params: list[NodeParams]) -> NodeParams:
+    if len(child_params) > 1:
+        first_child_param, *other_childs_params = child_params
+    else:
+        first_child_param = child_params[0]
+        other_childs_params = []
+
+    head = first_child_param.head
+    current_rows = first_child_param.rows or []
+    current_tail = first_child_param.tail or head
+
+    for child_param in other_childs_params:
+        if child_param.is_key:
+            continue
+        conection_row = create_connection_row(current_tail, child_param.head)
+        current_rows.append(conection_row)
+        current_tail = (
+            child_param.tail
+            if child_param.tail
+            else child_param.head
+        )
+
+    return NodeParams(
+        rows=current_rows,
+        head=head,
+        tail=current_tail,
+    )
+
+
+def branching_preparer(child_params: list[NodeParams]) -> NodeParams:
+    condition = child_params[2]
+
+    true_operations = []
+    current_true_idx = 5
+    while not child_params[current_true_idx].is_key:
+        true_operations.append(child_params[current_true_idx])
+        current_true_idx += 1
+
+    else_operations = []
+    current_else_idx = current_true_idx + 3
+    while not child_params[current_else_idx].is_key:
+        else_operations.append(child_params[current_else_idx])
+        current_else_idx += 1
+    true_block = get_child_chain(true_operations)
+    else_block = get_child_chain(else_operations)
+
+    head = DiadelEntity(
+        name='decision',
+        id=get_id(),
+    )
+    tail = DiadelEntity(
+        name='merge',
+        id=get_id(),
+    )
+    rows = []
+    rows.append(create_connection_row(
+        head, true_block.head, text=condition.text)
+    )
+    rows.extend(true_block.rows)
+    rows.append(create_connection_row(
+        true_block.tail, tail,
+    ))
+
+    if else_block.head:
+        rows.append(create_connection_row(
+            head, else_block.head, text='[else]',
+        ))
+        rows.extend(else_block.rows)
+        rows.append(create_connection_row(
+            else_block.tail, tail
+        ))
+    else:
+        rows.append(create_connection_row(
+            head, tail, text='[else]',
+        ))
+    
+    return NodeParams(
+        head=head,
+        rows=rows,
+        tail=tail,
+    )
+
+
 attributesMap = {
     Nonterminal.STATEMENT: statement_preparer,
     Nonterminal.OPERATOR: operator_preparer,
@@ -116,4 +199,6 @@ attributesMap = {
     Nonterminal.RETURN: return_preparer,
     Nonterminal.YIELD: return_preparer,
     Nonterminal.TRANSITION: transition_preparer,
+    Nonterminal.BRANCHING: branching_preparer,
+    Nonterminal.FLOW_STRUCTURE: pass_forward,
 }
