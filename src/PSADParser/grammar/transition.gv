@@ -6,7 +6,6 @@ digraph TRANSITION {
 
     start -> next_for
     start -> exit_for
-    start -> goto
     next_for -> end
     exit_for -> end
 }
