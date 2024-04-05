@@ -25,7 +25,6 @@ keys = [
     ("assign", Terminal.word),
     ("next for", Terminal.word),
     ("exit for", Terminal.word),
-    ("goto", Terminal.word),
     ("define", Terminal.word),
     ("comment", Terminal.word),
     ("integer", Terminal.word),
