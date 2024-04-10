@@ -1,45 +1,46 @@
 from enum import Enum
+from types import MappingProxyType
 
 
 class Terminal(Enum):
-    word = "word"
-    char_sequence = "char_sequence"
-    other = 'other'
+    WORD = "word"
+    CHAR_SEQUENCE = "char_sequence"
+    OTHER = 'other'
 
 
-tokenRegularExpressions = [
-    (Terminal.word, r'[a-zA-Z0-9_+*/\-=\.]+'),
-    (Terminal.char_sequence, r'[\(\),]'),
-    (Terminal.other, r'@@{.*}')
-]
+TOKEN_REGULAR_EXPRESSIONS: MappingProxyType[Terminal, str] = MappingProxyType({
+    Terminal.WORD: r'[a-zA-Z0-9_+*/\-=\.]+',
+    Terminal.CHAR_SEQUENCE: r'[\(\),]',
+    Terminal.OTHER: r'@@{.*}'
+})
 
 
-keys = [
-    ("algorithm", Terminal.word),
-    ("return", Terminal.word),
-    ("yield", Terminal.word),
-    ("call", Terminal.word),
-    ("func", Terminal.word),
-    ("proc", Terminal.word),
-    ("iter", Terminal.word),
-    ("assign", Terminal.word),
-    ("next for", Terminal.word),
-    ("exit for", Terminal.word),
-    ("define", Terminal.word),
-    ("comment", Terminal.word),
-    ("integer", Terminal.word),
-    ("string", Terminal.word),
-    ("char", Terminal.word),
-    ("array", Terminal.word),
-    ("struct", Terminal.word),
-    ("if", Terminal.word),
-    ("for", Terminal.word),
-    ("while", Terminal.word),
-    ("repeat", Terminal.word),
-    (",", Terminal.char_sequence),
-    ("(", Terminal.char_sequence),
-    (")", Terminal.char_sequence),
-]
+KEYS: MappingProxyType[str, Terminal] = MappingProxyType({
+    "algorithm": Terminal.WORD,
+    "return": Terminal.WORD,
+    "yield": Terminal.WORD,
+    "call": Terminal.WORD,
+    "func": Terminal.WORD,
+    "proc": Terminal.WORD,
+    "iter": Terminal.WORD,
+    "assign": Terminal.WORD,
+    "next for": Terminal.WORD,
+    "exit for": Terminal.WORD,
+    "define": Terminal.WORD,
+    "comment": Terminal.WORD,
+    "integer": Terminal.WORD,
+    "string": Terminal.WORD,
+    "char": Terminal.WORD,
+    "array": Terminal.WORD,
+    "struct": Terminal.WORD,
+    "if": Terminal.WORD,
+    "for": Terminal.WORD,
+    "while": Terminal.WORD,
+    "repeat": Terminal.WORD,
+    ",": Terminal.CHAR_SEQUENCE,
+    "(": Terminal.CHAR_SEQUENCE,
+    ")": Terminal.CHAR_SEQUENCE,
+})
 
 
 class Nonterminal(Enum):
@@ -73,4 +74,4 @@ class Nonterminal(Enum):
     STATEMENT = 'STATEMENT'
 
 
-axiom = Nonterminal.S
+AXIOM = Nonterminal.S

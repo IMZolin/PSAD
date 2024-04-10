@@ -1,11 +1,10 @@
-from syntax.core import *
+from syntax.core import SyntaxDescriptionType, SyntaxInfo
 import syntax.virt
-from syntax.build_ast import *
 
 
-def GetSyntaxDesription(syntaxParameters):
-    if SyntaxDescriptionType.VIRT_DIAGRAMS.value == syntaxParameters["type"]:
-        return syntax.virt.GetSyntaxDesription(syntaxParameters["info"]["diagrams"], syntaxParameters["info"]["supportInfo"])
-    if SyntaxDescriptionType.RBNF.value == syntaxParameters["type"]:
+def get_syntax_description(syntax_info: SyntaxInfo):
+    if syntax_info.type == SyntaxDescriptionType.VIRT_DIAGRAMS:
+        return syntax.virt.GetSyntaxDesription(syntax_info.diagrams_path)
+    if syntax_info.type == SyntaxDescriptionType.RBNF:
         raise Exception("RBNF not supported yet")
     raise Exception("Unsupported syntax description type")

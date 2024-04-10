@@ -1,1 +1,1 @@
-from afterscan.afterscan import Afterscan
+from afterscan.afterscanner import afterscan

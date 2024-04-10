@@ -1,7 +1,9 @@
-from scanner import Tokenize
-from afterscan import Afterscan
+from scanner import tokenize
+from afterscan import afterscan
 from dsl_token import *
-from syntax import *
+from syntax import get_syntax_description
+from syntax.build_ast import BuildAst, TreeNode
+from syntax.core import SyntaxInfo
 import dsl_info
 import attributor
 import attribute_evaluator
@@ -86,7 +88,7 @@ args = parser.parse_args()
 with open(args.jsonFile, 'r') as jsonFile:
     jsonData = json.loads(jsonFile.read())
 
-syntaxInfo = GetSyntaxDesription(jsonData["syntax"])
+syntaxInfo = get_syntax_description(SyntaxInfo(**jsonData["syntax"]))
 
 if "debugInfoDir" in jsonData:
     debugInfoDir = pathlib.Path(jsonData["debugInfoDir"])
@@ -98,12 +100,12 @@ else:
 with open(args.codeFile, 'r') as codeFile:
     code = codeFile.read()
 
-tokenList = Tokenize(code)
+tokenList = tokenize(code)
 #__RenderTokenStream('token_stream_after_scanner', tokenList, debugInfoDir)
-tokenList = Afterscan(tokenList)
+tokenList = afterscan(tokenList)
 #__RenderTokenStream('token_stream_after_afterscan', tokenList, debugInfoDir)
 
-ast = BuildAst(syntaxInfo, dsl_info.axiom, tokenList)
+ast = BuildAst(syntaxInfo, dsl_info.AXIOM, tokenList)
 #__RenderAst('ast', ast, debugInfoDir)
 attributor.SetAttributes(ast, attribute_evaluator.attributesMap)
 __RenderAst('ast_attributed', ast, debugInfoDir)

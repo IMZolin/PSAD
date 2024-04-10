@@ -1,4 +1,7 @@
 from enum import Enum
+from pathlib import Path
+
+from pydantic.dataclasses import dataclass
 
 
 class SyntaxDescriptionType(Enum):
@@ -19,3 +22,9 @@ class Node:
         self.type = type
         self.str = str
         self.nextNodes = []
+
+
+@dataclass
+class SyntaxInfo:
+    type: SyntaxDescriptionType
+    diagrams_path: Path
