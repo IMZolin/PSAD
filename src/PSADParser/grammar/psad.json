@@ -1,10 +1,7 @@
 {
     "syntax": {
         "type": "virt",
-        "info": {
-            "supportInfo": "grammar/grammar.sgi",
-            "diagrams": "grammar"
-        }
+        "diagrams_path": "/Users/dakuz47/npaa/PSAD/src/PSADParser/grammar"
     },
     "semantics": {
         "type": "virt"

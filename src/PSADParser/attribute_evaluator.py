@@ -183,11 +183,7 @@ def transition_preparer(child_params: list[NodeParams]) -> NodeParams:
 
 
 def get_child_chain(child_params: list[NodeParams]) -> NodeParams:
-    if len(child_params) > 1:
-        first_child_param, *other_childs_params = child_params
-    else:
-        first_child_param = child_params[0]
-        other_childs_params = []
+    first_child_param, *other_childs_params = child_params
 
     head = first_child_param.head
     current_rows = first_child_param.rows or []
@@ -257,7 +253,7 @@ def branching_preparer(child_params: list[NodeParams]) -> NodeParams:
         rows.append(create_connection_row(
             head, tail, text='[else]',
         ))
-    
+
     return NodeParams(
         head=head,
         rows=rows,
@@ -345,7 +341,7 @@ def alg_unit_preparer(child_params: list[NodeParams]) -> NodeParams:
 attributesMap = {
     Nonterminal.STATEMENT: statement_preparer,
     Nonterminal.OPERATOR: operator_preparer,
-    Nonterminal.CODE_BLOCK: code_block_preparer,
+    Nonterminal.CODE_BLOCK: get_child_chain,
     Nonterminal.FRAGMENT: pass_forward,
     Nonterminal.ALG_UNIT_RETURN: pass_forward,
     Nonterminal.S: s_preparer,

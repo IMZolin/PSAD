@@ -1,5 +1,9 @@
-from dataclasses import dataclass
+from pathlib import Path
 from typing import Optional
+
+from pydantic.dataclasses import dataclass
+
+from syntax import SyntaxDescriptionType
 
 
 @dataclass
@@ -29,4 +33,3 @@ class NodeParams:
     head: Optional[DiadelEntity] = None
     tail: Optional[DiadelEntity] = None
     is_key: bool = False
-

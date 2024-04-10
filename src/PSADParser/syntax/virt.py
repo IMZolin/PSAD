@@ -20,8 +20,9 @@ def __GetType(shape):
     raise Exception(f"Insopported shape - {shape}")
 
 
-def GetSyntaxDesription(diagramsDir, sgiFilePath):
-    files = pathlib.Path(diagramsDir).glob('**/*.gv')
+def GetSyntaxDesription(diagrams_path: pathlib.Path):
+    print('Start getting syntax description')
+    files = diagrams_path.glob('**/*.gv')
     res = dict()
     for file in files:
         print(f"Process {file.name}")
