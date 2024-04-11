@@ -1,4 +1,22 @@
 if(
     a = 5,
-    (b=c)
+    (
+        b=c,
+        a + 5
+    ),
+    (
+        if(
+            c = 3,
+            (hello world),
+            (
+                if(
+                    c = 4,
+                    (hello world),
+                    (bye world)
+                )
+            )
+        ),
+        privet,
+        1++
+    )
 )

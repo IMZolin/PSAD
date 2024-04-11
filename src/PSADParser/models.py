@@ -33,3 +33,15 @@ class NodeParams:
     head: Optional[DiadelEntity] = None
     tail: Optional[DiadelEntity] = None
     is_key: bool = False
+
+
+@dataclass
+class ConditionBranch:
+    branch_params: NodeParams
+    condition: str
+
+
+@dataclass
+class IfNodeParams(NodeParams):
+    true_condition_branches: Optional[list[ConditionBranch]] = None
+    else_branch: Optional[ConditionBranch] = None
