@@ -1,3 +1,22 @@
-a=5,
-func(a, (a,b), a=5, b=3),
-b=3
+if(
+    a = 5,
+    (
+        b=c,
+        a + 5
+    ),
+    (
+        if(
+            c = 3,
+            (hello world),
+            (
+                if(
+                    c = 4,
+                    (hello world),
+                    (bye world)
+                )
+            )
+        ),
+        privet,
+        1++
+    )
+)

@@ -24,10 +24,10 @@ def __RenderTokenStream(diagramName, tokenList, debugInfoDir):
     for token in tokenList:
         if Token.Type.TERMINAL == token.type:
             h.node(str(i),
-                   f"TERMINAL\ntype: {token.terminalType.word}\nstring: {token.str}" + (f"\nattribute: {token.attribute}" if token.attribute else ""),
+                   f"TERMINAL\ntype: {token.terminal_type.word}\nstring: {token.text}" + (f"\nattribute: {token.attribute}" if token.attribute else ""),
                    shape='diamond')
         elif Token.Type.KEY == token.type:
-            h.node(str(i), f"KEY\nstring: {token.str}" + (f"\nattribute: {token.attribute}" if token.attribute else ""), shape='oval')
+            h.node(str(i), f"KEY\nstring: {token.text}" + (f"\nattribute: {token.attribute}" if token.attribute else ""), shape='oval')
         h.edge(str(i - 1), str(i))
         i += 1
     h.node(str(i), '', shape='point')
@@ -54,10 +54,10 @@ def __RenderAst(diagramName, ast, debugInfoDir):
             token = node[0].token
             if Token.Type.TERMINAL == token.type:
                 h.node(str(i),
-                       f"TERMINAL\ntype: {token.terminalType.word}\nstring: {token.str}" + (f"\nattribute: {token.attribute}" if token.attribute else ""),
+                       f"TERMINAL\ntype: {token.terminal_type}\nstring: {token.text}" + (f"\nattribute: {token.attribute}" if token.attribute else ""),
                        shape='diamond')
             elif Token.Type.KEY == token.type:
-                h.node(str(i), f"KEY\nstring: {token.str}" + (f"\nattribute: {token.attribute}" if token.attribute else ""), shape='oval')
+                h.node(str(i), f"KEY\nstring: {token.text}" + (f"\nattribute: {token.attribute}" if token.attribute else ""), shape='oval')
             h.edge(str(node[1]), str(i))
         nodes = nodes[1:]
         i += 1

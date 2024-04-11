@@ -29,7 +29,7 @@ def __BuildAstElement(grammarDescription, nonterminal, tokenList: list[Token], s
             if NodeType.END == next[0].type:
                 exit = next
                 continue
-            if NodeType.KEY == next[0].type and Token.Type.KEY == newToken.type and newToken.str == next[0].str:
+            if NodeType.KEY == next[0].type and Token.Type.KEY == newToken.type and newToken.text == next[0].str:
                 element = TreeNode(TreeNode.Type.TOKEN)
                 element.attribute = newToken.attribute
                 element.token = newToken
@@ -42,7 +42,7 @@ def __BuildAstElement(grammarDescription, nonterminal, tokenList: list[Token], s
                 if len(findEnd) != 0:
                     exit = findEnd[0]
                 break
-            if NodeType.TERMINAL == next[0].type and Token.Type.TERMINAL == newToken.terminal_type and newToken.terminal_type == next[0].terminal:
+            if NodeType.TERMINAL == next[0].type and Token.Type.TERMINAL == newToken.type and newToken.terminal_type == next[0].terminal:
                 element = TreeNode(TreeNode.Type.TOKEN)
                 element.attribute = newToken.attribute
                 element.token = newToken
