@@ -1,9 +1,6 @@
-from pathlib import Path
 from typing import Optional
 
 from pydantic.dataclasses import dataclass
-
-from syntax import SyntaxDescriptionType
 
 
 @dataclass

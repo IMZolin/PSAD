@@ -7,7 +7,6 @@ class Token:
         TERMINAL = 0
         KEY = 1
 
-
     def __init__(self, type: Type, terminal_type: Terminal, text: str):
         self.type = type
         self.terminal_type = terminal_type
