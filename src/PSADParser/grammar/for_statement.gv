@@ -1,0 +1,12 @@
+digraph FOR_STATEMENT{
+    start [label=FOR_STATEMENT shape=plaintext]
+    in [label=in shape=oval]
+    statement_1 [label=STATEMENT shape=box]
+    statement_2 [label=STATEMENT shape=box]
+    end [label="" shape=point]
+
+    start -> statement_1
+    statement_1 -> in
+    in -> statement_2
+    statement_2 -> end
+}

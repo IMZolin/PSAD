@@ -2,3 +2,4 @@ flowchart~=0.0.1
 pyflowchart~=0.3.1
 graphviz==0.20.1
 pydot==1.4.2
+requests~=2.31.0

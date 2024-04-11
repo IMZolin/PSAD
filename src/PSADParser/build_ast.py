@@ -104,7 +104,7 @@ tokenList = Afterscan(tokenList)
 #__RenderTokenStream('token_stream_after_afterscan', tokenList, debugInfoDir)
 
 ast = BuildAst(syntaxInfo, dsl_info.axiom, tokenList)
-#__RenderAst('ast', ast, debugInfoDir)
+# __RenderAst('ast', ast, debugInfoDir)
 attributor.SetAttributes(ast, attribute_evaluator.attributesMap)
 __RenderAst('ast_attributed', ast, debugInfoDir)
 print('\n'.join(ast.attribute.rows))

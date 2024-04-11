@@ -1,7 +1,7 @@
 digraph FOR{
     start [label=FOR shape=plaintext]
     for [label=for shape=oval]
-    statement [label=STATEMENT shape=box]
+    statement [label=FOR_STATEMENT shape=box]
     oper [label=OPERATOR shape=box]
     open [label="(" shape=oval]
     comma_1 [label="," shape=oval]

@@ -36,6 +36,7 @@ keys = [
     ("for", Terminal.word),
     ("while", Terminal.word),
     ("repeat", Terminal.word),
+    ("in", Terminal.word),
     (",", Terminal.char_sequence),
     ("(", Terminal.char_sequence),
     (")", Terminal.char_sequence),
@@ -71,6 +72,7 @@ class Nonterminal(Enum):
     TRANSITION = 'TRANSITION'
     PARAM_LIST = 'PARAM_LIST'
     STATEMENT = 'STATEMENT'
+    FOR_STATEMENT = 'FOR_STATEMENT'
 
 
 axiom = Nonterminal.S
