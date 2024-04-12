@@ -1,22 +1,8 @@
 if(
     a = 5,
     (
-        b=c,
-        a + 5
+        b = 3,
+        a += 3
     ),
-    (
-        if(
-            c = 3,
-            (hello world),
-            (
-                if(
-                    c = 4,
-                    (hello world),
-                    (bye world)
-                )
-            )
-        ),
-        privet,
-        1++
-    )
+    (print)
 )

@@ -11,6 +11,11 @@ class IfPreparerChilds(enum.Enum):
     TRUE_BLOCK_IDX = 5
 
 
+class RepeatPreparerChilds(enum.Enum):
+    CONDITION_IDX = 2
+    OPERATORS_IDX = 4
+
+
 def statement_preparer(childs_params: list[NodeParams]) -> NodeParams:
     return NodeParams(
         text=' '.join(child_param.text for child_param in childs_params)
@@ -388,6 +393,12 @@ def alg_unit_preparer(child_params: list[NodeParams]) -> NodeParams:
         head=fun_name,
         rows=rows
     )
+
+
+def repeat_preparer(childs_params: list[NodeParams]) -> NodeParams:
+    condition = childs_params[RepeatPreparerChilds.CONDITION_IDX.value].text
+    operators = []
+    
 
 
 attributesMap = {
