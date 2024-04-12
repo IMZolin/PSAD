@@ -16,6 +16,20 @@ class RepeatPreparerChilds(enum.Enum):
     OPERATORS_IDX = 4
 
 
+def slice_operators(
+        childs: list[NodeParams],
+        start_idx: int
+    ) -> list[NodeParams]:
+        operators = []
+        current_idx = start_idx
+        while current_idx < len(childs) and childs[current_idx].text != ')':
+            if not childs[current_idx].is_key:
+                operators.append(childs[current_idx])
+            current_idx += 1
+
+        return operators
+
+
 def statement_preparer(childs_params: list[NodeParams]) -> NodeParams:
     return NodeParams(
         text=' '.join(child_param.text for child_param in childs_params)
@@ -223,19 +237,6 @@ def get_child_chain(childs_params: list[NodeParams]) -> NodeParams:
 
 
 def branching_preparer(childs_params: list[NodeParams]) -> NodeParams:
-    def slice_operators(
-        childs: list[NodeParams],
-        start_idx: int
-    ) -> list[NodeParams]:
-        operators = []
-        current_idx = start_idx
-        while current_idx < len(childs) and childs[current_idx].text != ')':
-            if not childs[current_idx].is_key:
-                operators.append(childs[current_idx])
-            current_idx += 1
-
-        return operators
-
     def connect_branch(
         head: DiadelEntity,
         tail: DiadelEntity,
@@ -397,35 +398,65 @@ def alg_unit_preparer(child_params: list[NodeParams]) -> NodeParams:
 
 def repeat_preparer(childs_params: list[NodeParams]) -> NodeParams:
     condition = childs_params[RepeatPreparerChilds.CONDITION_IDX.value].text
-    operators = []
+    operators = slice_operators(
+        childs_params, RepeatPreparerChilds.OPERATORS_IDX.value
+    )
+    operators_block = get_child_chain(operators)
+
+    decision = DiadelEntity('decision', id=get_id())
     
+    rows = []
+    rows.extend(operators_block.rows)
+    rows.append(create_connection_row(operators_block.tail, decision))
+    rows.append(create_connection_row(decision, operators_block.head, condition))
+
+    return NodeParams(
+        rows=rows,
+        head=operators_block.head,
+        tail=decision,
+    )
+
+
+def comment_preparer(childs_params: list[NodeParams]) -> NodeParams:
+    text = childs_params[2].text
+
+    return NodeParams(
+        head=DiadelEntity(
+            name='comment',
+            id=get_id(),
+            text=text,
+        )
+    )
 
 
 attributesMap = {
-    Nonterminal.STATEMENT: statement_preparer,
-    Nonterminal.OPERATOR: operator_preparer,
-    Nonterminal.CODE_BLOCK: code_block_preparer,
-    Nonterminal.FRAGMENT: pass_forward,
+    Nonterminal.ALG: alg_unit_preparer,
+    Nonterminal.ALG_UNIT: alg_unit_preparer,
     Nonterminal.ALG_UNIT_RETURN: pass_forward,
-    Nonterminal.S: s_preparer,
-    Nonterminal.RETURN: return_preparer,
-    Nonterminal.YIELD: return_preparer,
-    Nonterminal.TRANSITION: transition_preparer,
-    Nonterminal.BRANCHING: branching_preparer,
-    Nonterminal.FLOW_STRUCTURE: pass_forward,
     Nonterminal.ASSIGNMENT: assignment_preparer,
-    Nonterminal.NAME: pass_forward,
-    Nonterminal.TYPE: pass_forward,
-    Nonterminal.OUTPUT: pass_forward,
-    Nonterminal.TYPE_ARRAY: type_array_preparer,
-    Nonterminal.TYPE_STRUCT: type_struct_preparer,
-    Nonterminal.DEFINITION: definition_preparer,
-    Nonterminal.INPUT: input_preparer,
-    Nonterminal.PARAM_LIST: param_list_preparer,
+    Nonterminal.BRANCHING: branching_preparer,
     Nonterminal.CALL: call_preparer,
+    Nonterminal.CODE_BLOCK: code_block_preparer,
+    Nonterminal.COMMENT: comment_preparer,
     Nonterminal.CYCLE: pass_forward,
-    Nonterminal.WHILE: while_preparer,
+    Nonterminal.DEFINITION: definition_preparer,
+    Nonterminal.FLOW_STRUCTURE: pass_forward,
     Nonterminal.FOR: for_preparer,
     Nonterminal.FOR_STATEMENT: for_statement_preparer,
-    Nonterminal.ALG_UNIT: alg_unit_preparer
+    Nonterminal.FRAGMENT: pass_forward,
+    Nonterminal.INPUT: input_preparer,
+    Nonterminal.NAME: pass_forward,
+    Nonterminal.OPERATOR: operator_preparer,
+    Nonterminal.OUTPUT: pass_forward,
+    Nonterminal.PARAM_LIST: param_list_preparer,
+    Nonterminal.RETURN: return_preparer,
+    Nonterminal.REPEAT: repeat_preparer,
+    Nonterminal.S: s_preparer,
+    Nonterminal.STATEMENT: statement_preparer,
+    Nonterminal.TRANSITION: transition_preparer,
+    Nonterminal.TYPE: pass_forward,
+    Nonterminal.TYPE_ARRAY: type_array_preparer,
+    Nonterminal.TYPE_STRUCT: type_struct_preparer,
+    Nonterminal.YIELD: return_preparer,
+    Nonterminal.WHILE: while_preparer,
 }
