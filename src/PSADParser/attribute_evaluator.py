@@ -38,18 +38,22 @@ def statement_preparer(childs_params: list[NodeParams]) -> NodeParams:
 
 def assignment_preparer(child_params: list[NodeParams]) -> NodeParams:
     assert len(child_params) == 6
+
+    left = child_params[2].text
+    right = child_params[4].text if child_params[4].text else child_params[4].head.text
+
     return NodeParams(
         head=DiadelEntity(
             name='action',
             id=get_id(),
-            text=''.join(child_params[2].text + ":=" + child_params[4].text),
+            text=':='.join([left, right]),
         )
     )
 
 
 def call_preparer(child_params: list[NodeParams]) -> NodeParams:
     assert len(child_params) == 6
-    print()
+
     return NodeParams(
         head=DiadelEntity(
             name='action',

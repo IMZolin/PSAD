@@ -1,5 +1,5 @@
 from syntax.build_ast import TreeNode
-
+from dsl_info import Nonterminal
 
 def SetAttributes(ast, attributeFunctions):
     nodes = [ast]
