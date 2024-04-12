@@ -21,3 +21,5 @@
     comment = &file
     --> = &dot_arrow
 ````
+
+Документация DiaDel: https://docs.google.com/document/d/12-hBsRhrb9u0rKlIdMMMGgq_6RIPzzVA_9fQb0JKEUw/edit
