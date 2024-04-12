@@ -1,0 +1,4 @@
+comment{id=28, text="funca(a,b)"} # =>{} # start{id=26};
+start{id=26} # =>{} # action{id=25, text="a=5"};
+action{id=25, text="a=5"} # =>{} # action{id=24, text="b=3"};
+action{id=24, text="b=3"} # =>{} # end{id=27};

@@ -1,0 +1,13 @@
+{
+    "syntax": {
+        "type": "virt",
+        "info": {
+            "supportInfo": "_examples/ciao/ciao.sgi",
+            "diagrams": "_examples/ciao"
+        }
+    },
+    "semantics": {
+        "type": "virt"
+    },
+    "debugInfoDir": "_debug"
+}
