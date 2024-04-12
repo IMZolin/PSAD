@@ -1,4 +1,8 @@
-comment{id=28, text="funca(a,b)"} # =>{} # start{id=26};
-start{id=26} # =>{} # action{id=25, text="a=5"};
-action{id=25, text="a=5"} # =>{} # action{id=24, text="b=3"};
-action{id=24, text="b=3"} # =>{} # end{id=27};
+comment{id=620, text="funcGCD(a,b)"} # =>{} # start{id=618};
+start{id=618} # =>{} # decision{id=616};
+decision{id=616} # =>{text="[b=0]"} # action{id=614, text="res:=a"};
+action{id=614, text="res:=a"} # =>{} # merge{id=617};
+decision{id=616} # =>{text="[else]"} # action{id=613, text="res:=GCD(b,a mod b)"};
+action{id=613, text="res:=GCD(b,a mod b)"} # =>{} # merge{id=617};
+merge{id=617} # =>{} # action{id=615, text="return res"};
+action{id=615, text="return res"} # =>{} # end{id=619};

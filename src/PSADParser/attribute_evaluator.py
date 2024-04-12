@@ -292,7 +292,7 @@ def branching_preparer(childs_params: list[NodeParams]) -> NodeParams:
     else:
         else_branch = ConditionBranch(
             branch_params=get_child_chain(else_operators),
-            condition='[else]'
+            condition='else'
         ) if else_operators else None
 
     head = DiadelEntity(
@@ -312,7 +312,7 @@ def branching_preparer(childs_params: list[NodeParams]) -> NodeParams:
     if else_branch:
         rows.extend(connect_branch(head, tail, else_branch))
     else:
-        rows.append(create_connection_row(head, tail, '[else]'))
+        rows.append(create_connection_row(head, tail, 'else'))
 
     return IfNodeParams(
         head=head,

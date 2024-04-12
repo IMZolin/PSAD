@@ -17,7 +17,7 @@ def create_connection_row(
     left: DiadelEntity,
     text: Optional[str] = None
 ) -> str:
-    connection_text = f'text={text}' if text else ''
+    connection_text = f'text="[{text}]"' if text else ''
 
     return ' # '.join([
         f'{right.to_string()}',
