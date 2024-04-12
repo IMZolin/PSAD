@@ -5,6 +5,7 @@ digraph REPEAT{
     oper [label=OPERATOR shape=box]
     open [label="(" shape=oval]
     comma [label="," shape=oval]
+    comma_2 [label="," shape=oval]
     close [label=")" shape=oval]
     end [label="" shape=point]
 
@@ -13,7 +14,8 @@ digraph REPEAT{
     open -> statement
     statement -> comma
     comma -> oper
-    oper -> oper
+    oper -> comma_2
+    comma_2 -> oper
     oper -> close
     close -> end
 }

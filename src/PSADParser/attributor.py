@@ -1,4 +1,4 @@
-from syntax import *
+from syntax.build_ast import TreeNode
 
 
 def SetAttributes(ast, attributeFunctions):

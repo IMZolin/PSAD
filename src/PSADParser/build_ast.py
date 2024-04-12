@@ -1,7 +1,9 @@
-from scanner import Tokenize
-from afterscan import Afterscan
+from scanner import tokenize
+from afterscan import afterscan
 from dsl_token import *
-from syntax import *
+from syntax import get_syntax_description
+from syntax.build_ast import BuildAst, TreeNode
+from syntax.core import SyntaxInfo
 import dsl_info
 import attributor
 import attribute_evaluator
@@ -22,10 +24,10 @@ def __RenderTokenStream(diagramName, tokenList, debugInfoDir):
     for token in tokenList:
         if Token.Type.TERMINAL == token.type:
             h.node(str(i),
-                   f"TERMINAL\ntype: {token.terminalType.word}\nstring: {token.str}" + (f"\nattribute: {token.attribute}" if token.attribute else ""),
+                   f"TERMINAL\ntype: {token.terminal_type.word}\nstring: {token.text}" + (f"\nattribute: {token.attribute}" if token.attribute else ""),
                    shape='diamond')
         elif Token.Type.KEY == token.type:
-            h.node(str(i), f"KEY\nstring: {token.str}" + (f"\nattribute: {token.attribute}" if token.attribute else ""), shape='oval')
+            h.node(str(i), f"KEY\nstring: {token.text}" + (f"\nattribute: {token.attribute}" if token.attribute else ""), shape='oval')
         h.edge(str(i - 1), str(i))
         i += 1
     h.node(str(i), '', shape='point')
@@ -52,10 +54,10 @@ def __RenderAst(diagramName, ast, debugInfoDir):
             token = node[0].token
             if Token.Type.TERMINAL == token.type:
                 h.node(str(i),
-                       f"TERMINAL\ntype: {token.terminalType.word}\nstring: {token.str}" + (f"\nattribute: {token.attribute}" if token.attribute else ""),
+                       f"TERMINAL\ntype: {token.terminal_type}\nstring: {token.text}" + (f"\nattribute: {token.attribute}" if token.attribute else ""),
                        shape='diamond')
             elif Token.Type.KEY == token.type:
-                h.node(str(i), f"KEY\nstring: {token.str}" + (f"\nattribute: {token.attribute}" if token.attribute else ""), shape='oval')
+                h.node(str(i), f"KEY\nstring: {token.text}" + (f"\nattribute: {token.attribute}" if token.attribute else ""), shape='oval')
             h.edge(str(node[1]), str(i))
         nodes = nodes[1:]
         i += 1
@@ -86,7 +88,7 @@ args = parser.parse_args()
 with open(args.jsonFile, 'r') as jsonFile:
     jsonData = json.loads(jsonFile.read())
 
-syntaxInfo = GetSyntaxDesription(jsonData["syntax"])
+syntaxInfo = get_syntax_description(SyntaxInfo(**jsonData["syntax"]))
 
 if "debugInfoDir" in jsonData:
     debugInfoDir = pathlib.Path(jsonData["debugInfoDir"])
@@ -98,13 +100,13 @@ else:
 with open(args.codeFile, 'r') as codeFile:
     code = codeFile.read()
 
-tokenList = Tokenize(code)
+tokenList = tokenize(code)
 #__RenderTokenStream('token_stream_after_scanner', tokenList, debugInfoDir)
-tokenList = Afterscan(tokenList)
+tokenList = afterscan(tokenList)
 #__RenderTokenStream('token_stream_after_afterscan', tokenList, debugInfoDir)
 
-ast = BuildAst(syntaxInfo, dsl_info.axiom, tokenList)
-# __RenderAst('ast', ast, debugInfoDir)
+ast = BuildAst(syntaxInfo, dsl_info.AXIOM, tokenList)
+#__RenderAst('ast', ast, debugInfoDir)
 attributor.SetAttributes(ast, attribute_evaluator.attributesMap)
 __RenderAst('ast_attributed', ast, debugInfoDir)
 print('\n'.join(ast.attribute.rows))

@@ -28,10 +28,10 @@ digraph BRANCHING{
     oper_true -> comma_true_2
     comma_true_2 -> oper_true
     oper_true -> close_1
+    close_1 -> close
     close_1 -> comma_else_1
     comma_else_1 -> open_2
     open_2 -> oper_else
-    open_2 -> close_2
     oper_else -> comma_else_2
     comma_else_2 -> oper_else
     oper_else -> close_2

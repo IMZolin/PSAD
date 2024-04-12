@@ -1,4 +1,4 @@
-from dsl_token import *
+from dsl_token import Token
 from syntax.core import *
 
 
@@ -13,7 +13,7 @@ class TreeNode:
         self.attribute = None
 
 
-def __BuildAstElement(grammarDescription, nonterminal, tokenList, start, end):
+def __BuildAstElement(grammarDescription, nonterminal, tokenList: list[Token], start, end):
     if nonterminal not in grammarDescription:
         raise Exception(f"Failed to find '{nonterminal}' description")
     result = TreeNode(TreeNode.Type.NONTERMINAL)
@@ -29,7 +29,7 @@ def __BuildAstElement(grammarDescription, nonterminal, tokenList, start, end):
             if NodeType.END == next[0].type:
                 exit = next
                 continue
-            if NodeType.KEY == next[0].type and Token.Type.KEY == newToken.type and newToken.str == next[0].str:
+            if NodeType.KEY == next[0].type and Token.Type.KEY == newToken.type and newToken.text == next[0].str:
                 element = TreeNode(TreeNode.Type.TOKEN)
                 element.attribute = newToken.attribute
                 element.token = newToken
@@ -42,7 +42,7 @@ def __BuildAstElement(grammarDescription, nonterminal, tokenList, start, end):
                 if len(findEnd) != 0:
                     exit = findEnd[0]
                 break
-            if NodeType.TERMINAL == next[0].type and Token.Type.TERMINAL == newToken.type and newToken.terminalType == next[0].terminal:
+            if NodeType.TERMINAL == next[0].type and Token.Type.TERMINAL == newToken.type and newToken.terminal_type == next[0].terminal:
                 element = TreeNode(TreeNode.Type.TOKEN)
                 element.attribute = newToken.attribute
                 element.token = newToken
@@ -77,7 +77,7 @@ def __BuildAstElement(grammarDescription, nonterminal, tokenList, start, end):
             result.commands.append(exit[1])
             exit = None
         else:
-            raise Exception(f"Failed to process token '{newToken.str}'")
+            raise Exception(f"Failed to process token '{newToken.text}'")
     if exit is not None:
         result.commands.append(exit[1])
     return result, start, end

@@ -5,6 +5,7 @@ from models import DiadelEntity
 
 ENTITY_ID = 0
 
+
 def get_id():
     global ENTITY_ID
     ENTITY_ID += 1
@@ -16,7 +17,10 @@ def create_connection_row(
     left: DiadelEntity,
     text: Optional[str] = None
 ) -> str:
-    connection_text = f'{{text={text}}}' if text else ''
+    connection_text = f'text={text}' if text else ''
 
-    return f'{right.to_string()} # =>{str("{")}{connection_text}{str("}")} # {left.to_string()};'
-
+    return ' # '.join([
+        f'{right.to_string()}',
+        f'=>{{{connection_text}}}',
+        f'{left.to_string()};'
+    ])

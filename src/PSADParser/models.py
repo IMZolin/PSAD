@@ -1,5 +1,6 @@
-from dataclasses import dataclass
 from typing import Optional
+
+from pydantic.dataclasses import dataclass
 
 
 @dataclass
@@ -30,3 +31,14 @@ class NodeParams:
     tail: Optional[DiadelEntity] = None
     is_key: bool = False
 
+
+@dataclass
+class ConditionBranch:
+    branch_params: NodeParams
+    condition: str
+
+
+@dataclass
+class IfNodeParams(NodeParams):
+    true_condition_branches: Optional[list[ConditionBranch]] = None
+    else_branch: Optional[ConditionBranch] = None
